@@ -1,22 +1,8 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: hkeles <hkeles@student.42kocaeli.com.tr>   +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/11 02:09:13 by hkeles            #+#    #+#             */
-/*   Updated: 2023/07/11 14:19:13 by hkeles           ###   ########.tr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "ft_printf.h"
 
 int	ft_putchar(char c)
 {
-	if (write(1, &c, 1) == -1)
-		return (-1);
-	return (1);
+	return(write(1, &c, 1));
 }
 
 int	ft_printf_continue(const char *str, va_list args)
