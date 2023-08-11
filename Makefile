@@ -1,18 +1,19 @@
 NAME = libftprintf.a
-FLAG = -Wall -Wextra -Werror
-SRC = 	./ft_printf.c		\
-		./ft_printf_utils.c
+RM = rm -rf
+CMPL = gcc -Wall -Wextra -Werror -c
+SRC = 	./ft_printf.c ./ft_printf_utils.c
+
+OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
 
 $(NAME):
-	gcc $(FLAG) -c $(SRC)
-	ar rc $(NAME) *.o
+	$(CMPL) $(SRC)
+	ar rc $(NAME) $(OBJ)
 clean:
-	/bin/rm -f  *.o
-fclean: clean
-	/bin/rm -f $(NAME)
-
+	$(RM) $(OBJ)
+fclean : clean
+	$(RM) $(NAME)
 re: fclean all
 
 .PHONY: all clean fclean re
