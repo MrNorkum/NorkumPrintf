@@ -2,7 +2,6 @@
 # define FT_PRINTF_H
 
 # include <stdarg.h>
-# include <stdlib.h>
 # include <stdint.h>
 
 int		ft_printf(const char *str, ...);
