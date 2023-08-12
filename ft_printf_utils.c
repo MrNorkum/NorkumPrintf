@@ -8,7 +8,7 @@ int	ft_putstr(char *str)
 	if (!str)
 		str = "(null)";
 	while (str[++len])
-		if (ft_putchar(str[len]) == -1)
+		if (write(1, &str[len], 1) == -1)
 			return (-1);
 	return (len);
 }
@@ -33,7 +33,7 @@ int	ft_format(va_list args, char format)
 		return (ft_itoa_base(va_arg(args, unsigned int),
 			16, "0123456789ABCDEF", 0));
 	else if (format == '%')
-		return (ft_putchar('%'));
+		return (write(1, "%", 1));
 	return (-1);
 }
 
@@ -51,7 +51,7 @@ int	ft_itoa_base_continue(uintptr_t nbr, int base, char *str, int len)
 	while (i--)
 	{
 		len++;
-		if (ft_putchar(str[tab[i]]) == -1)
+		if (write(1, &str[tab[i]], 1) == -1)
 			return (-1);
 	}
 	return (len);
@@ -67,7 +67,7 @@ int	ft_itoa_base(uintptr_t nbr, int base, char *str, int mod)
 	if (mod == 1 && (int)nbr < 0)
 	{
 		nbr *= -1;
-		if (ft_putchar('-') == -1)
+		if (write(1, "-", 1) == -1)
 			return (-1);
 		len++;
 	}
@@ -78,6 +78,6 @@ int	ft_itoa_base(uintptr_t nbr, int base, char *str, int mod)
 		len += 2;
 	}
 	if (nbr == 0)
-		return (len + ft_putchar('0'));
+		return (len + write(1, "0", 1));
 	return (ft_itoa_base_continue(nbr, base, str, len));
 }
