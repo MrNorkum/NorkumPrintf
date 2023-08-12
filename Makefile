@@ -1,7 +1,7 @@
 NAME = libftprintf.a
 RM = rm -rf
 CMPL = gcc -Wall -Wextra -Werror -c
-SRC = 	./ft_printf.c
+SRC = 	./ft_printf.c ./fT_printf_utils.c
 
 OBJ = $(SRC:.c=.o)
 
