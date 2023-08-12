@@ -13,28 +13,6 @@ int	ft_putstr(char *str)
 	return (len);
 }
 
-int	ft_format_continue(va_list args, char format)
-{
-	void	*ptr;
-
-	if (format == 'p')
-	{
-		ptr = va_arg(args, void *);
-		if (ptr == NULL)
-			return (ft_putstr("0x0"));
-		return (ft_itoa_base((uintptr_t)ptr, 16, "0123456789abcdef", 2));
-	}
-	else if (format == 'x')
-		return (ft_itoa_base(va_arg(args, unsigned int),
-				16, "0123456789abcdef", 0));
-	else if (format == 'X')
-		return (ft_itoa_base(va_arg(args, unsigned int),
-				16, "0123456789ABCDEF", 0));
-	else if (format == '%')
-		return (ft_putchar('%'));
-	return (-1);
-}
-
 int	ft_format(va_list args, char format)
 {
 	if (format == 'c')
@@ -45,8 +23,18 @@ int	ft_format(va_list args, char format)
 		return (ft_itoa_base(va_arg(args, unsigned int), 10, "0123456789", 0));
 	else if (format == 'd' || format == 'i')
 		return (ft_itoa_base(va_arg(args, int), 10, "0123456789", 1));
-	else
-		return (ft_format_continue(args, format));
+	else if (format == 'p')
+		return (ft_itoa_base(va_arg(args, uintptr_t), 
+			16, "0123456789abcdef", 2));
+	else if (format == 'x')
+		return (ft_itoa_base(va_arg(args, unsigned int),
+			16, "0123456789abcdef", 0));
+	else if (format == 'X')
+		return (ft_itoa_base(va_arg(args, unsigned int),
+			16, "0123456789ABCDEF", 0));
+	else if (format == '%')
+		return (ft_putchar('%'));
+	return (-1);
 }
 
 int	ft_itoa_base_continue(uintptr_t nbr, int base, char *str, int len)
@@ -83,13 +71,13 @@ int	ft_itoa_base(uintptr_t nbr, int base, char *str, int mod)
 			return (-1);
 		len++;
 	}
-	if (mod == 2 && nbr != 0)
+	if (mod == 2)
 	{
 		if (ft_putstr("0x") == -1)
 			return (-1);
 		len += 2;
 	}
-	else if (nbr == 0)
-		return (ft_putchar('0'));
+	if (nbr == 0)
+		return (len + ft_putchar('0'));
 	return (ft_itoa_base_continue(nbr, base, str, len));
 }
