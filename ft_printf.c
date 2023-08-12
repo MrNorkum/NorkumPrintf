@@ -1,11 +1,6 @@
 #include "ft_printf.h"
 #include <unistd.h>
 
-int	ft_putchar(char c)
-{
-	return(write(1, &c, 1));
-}
-
 int	ft_printf(const char *str, ...)
 {
 	int	len;
@@ -23,7 +18,7 @@ int	ft_printf(const char *str, ...)
 			if (tmp == -1)
 				return (-1);
 		}
-		else if (ft_putchar(*str++) == -1)
+		else if (write(1, str++, 1) == -1)
 			return (-1);
 		len += tmp;
 	}
