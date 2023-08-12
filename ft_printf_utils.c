@@ -4,16 +4,12 @@ int	ft_putstr(char *str)
 {
 	int	len;
 
-	len = 0;
+	len = -1;
 	if (!str)
 		str = "(null)";
-	while (*str)
-	{
-		if (ft_putchar(*str) == -1)
+	while (str[++len])
+		if (ft_putchar(str[len]) == -1)
 			return (-1);
-		len++;
-		str++;
-	}
 	return (len);
 }
 
