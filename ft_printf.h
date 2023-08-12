@@ -3,7 +3,7 @@
 
 # include <stdarg.h>
 
-int		ft_printf(const char *str, ...);
-int   ft_format(va_list args, char format);
+int    ft_printf(const char *str, ...);
+int    ft_format(va_list args, char format);
 
 #endif
