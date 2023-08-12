@@ -1,5 +1,7 @@
 #include "ft_printf.h"
+#include <stdarg.h>
 #include <unistd.h>
+#include <stdint.h>
 
 int	ft_putstr(char *str)
 {
