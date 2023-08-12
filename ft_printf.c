@@ -1,6 +1,26 @@
 #include "ft_printf.h"
 #include <unistd.h>
 
+int	ft_itoa_base_continue(uintptr_t nbr, int base, char *str, int len)
+{
+	int	tab[100];
+	int	i;
+
+	i = 0;
+	while (nbr)
+	{
+		tab[i++] = nbr % base;
+		nbr /= base;
+	}
+	while (i--)
+	{
+		len++;
+		if (write(1, &str[tab[i]], 1) == -1)
+			return (-1);
+	}
+	return (len);
+}
+
 int	ft_itoa_base(uintptr_t nbr, int base, char *str, int mod)
 {
 	int	i;
