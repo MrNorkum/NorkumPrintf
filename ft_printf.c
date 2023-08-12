@@ -6,12 +6,14 @@ int	ft_putchar(char c)
 	return(write(1, &c, 1));
 }
 
-int	ft_printf_continue(const char *str, va_list args)
+int	ft_printf(const char *str, ...)
 {
 	int	len;
 	int	tmp;
+	va_list	args;
 
 	len = 0;
+	va_start(args, str);
 	while (*str)
 	{
 		tmp = 1;
@@ -25,16 +27,6 @@ int	ft_printf_continue(const char *str, va_list args)
 			return (-1);
 		len += tmp;
 	}
-	return (len);
-}
-
-int	ft_printf(const char *str, ...)
-{
-	int		len;
-	va_list	args;
-
-	va_start(args, str);
-	len = ft_printf_continue(str, args);
 	va_end(args);
 	return (len);
 }
