@@ -12,21 +12,18 @@ int	ft_printf_continue(const char *str, va_list args)
 	int	tmp;
 
 	len = 0;
-	tmp = 0;
-	while (*str != '\0')
+	while (*str)
 	{
 		tmp = 1;
 		if (*str == '%')
 		{
-			str++;
-			tmp = ft_format(args, *str);
+			tmp = ft_format(args, *++str);
 			if (tmp == -1)
 				return (-1);
 		}
-		else if (ft_putchar(*str) == -1)
+		else if (ft_putchar(*str++) == -1)
 			return (-1);
 		len += tmp;
-		str++;
 	}
 	return (len);
 }
