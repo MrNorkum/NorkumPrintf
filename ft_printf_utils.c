@@ -90,10 +90,6 @@ int	ft_itoa_base(uintptr_t nbr, int base, char *str, int mod)
 		len += 2;
 	}
 	else if (nbr == 0)
-	{
-		if (ft_putchar('0') == -1)
-			return (-1);
-		return (1);
-	}
+		return (ft_putchar('0'));
 	return (ft_itoa_base_continue(nbr, base, str, len));
 }
