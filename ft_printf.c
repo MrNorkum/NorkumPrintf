@@ -102,8 +102,9 @@ int	ft_printf(const char *str, ...)
 			if (tmp == -1)
 				return (-1);
 		}
-		else if (write(1, str++, 1) == -1)
+		else if (write(1, str, 1) == -1)
 			return (-1);
+		str++;
 		len += tmp;
 	}
 	va_end(args);
