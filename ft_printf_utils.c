@@ -61,7 +61,11 @@ int	ft_itoa_base(uintptr_t nbr, int base, char *str, int mod)
 		len += 2;
 	}
 	if (nbr == 0)
-		return (len + write(1, "0", 1));
+	{
+		if (write(1, "0", 1) == -1)
+			return (-1);
+		return (len + 1);
+	}
 	return (ft_itoa_base_continue(nbr, base, str, len));
 }
 
