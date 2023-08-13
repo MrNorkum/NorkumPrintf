@@ -49,7 +49,7 @@ int	ft_itoa_base(uintptr_t nbr, int base, char *str, int mod)
 	}
 	if (mod == 2)
 	{
-		if (ft_putstr("0x") == -1)
+		if (write(1, "0x", 2) == -1)
 			return (-1);
 		len += 2;
 	}
