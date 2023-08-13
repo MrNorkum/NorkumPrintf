@@ -109,6 +109,5 @@ int	ft_printf(const char *str, ...)
 		str++;
 		len += tmp;
 	}
-	va_end(args);
-	return (len);
+	return (va_end(args), len);
 }
