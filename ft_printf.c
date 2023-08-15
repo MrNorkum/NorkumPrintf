@@ -2,7 +2,7 @@
 #include <unistd.h>
 #include <stdint.h>
 
-static int	ft_putstr(char *str)
+static inline int	ft_putstr(char *str)
 {
 	int	len;
 
@@ -15,7 +15,7 @@ static int	ft_putstr(char *str)
 	return (len);
 }
 
-static int	ft_itoa_base2(uintptr_t nbr, int base, char *str, int len)
+static inline int	ft_itoa_base2(uintptr_t nbr, int base, char *str, int len)
 {
 	int	tab[100];
 	int	i;
@@ -35,7 +35,7 @@ static int	ft_itoa_base2(uintptr_t nbr, int base, char *str, int len)
 	return (len);
 }
 
-static int	ft_itoa_base(uintptr_t nbr, int base, char *str, int mod)
+static inline int	ft_itoa_base(uintptr_t nbr, int base, char *str, int mod)
 {
 	int	len;
 
@@ -62,7 +62,7 @@ static int	ft_itoa_base(uintptr_t nbr, int base, char *str, int mod)
 	return (ft_itoa_base2(nbr, base, str, len));
 }
 
-static int	ft_format(va_list args, char format)
+static inline int	ft_format(va_list args, char format)
 {
 	if (format == 'c')
 		return (format = va_arg(args, int), write(1, &format, 1));
