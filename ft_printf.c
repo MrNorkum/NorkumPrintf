@@ -73,14 +73,14 @@ static inline int	ft_format(va_list args, char format)
 	else if (format == 'd' || format == 'i')
 		return (ft_itoa_base(va_arg(args, int), 10, "0123456789", 1));
 	else if (format == 'p')
-		return (ft_itoa_base(va_arg(args, uintptr_t), 
-			16, "0123456789abcdef", 2));
+		return (ft_itoa_base(va_arg(args, uintptr_t),
+				16, "0123456789abcdef", 2));
 	else if (format == 'x')
 		return (ft_itoa_base(va_arg(args, unsigned int),
-			16, "0123456789abcdef", 0));
+				16, "0123456789abcdef", 0));
 	else if (format == 'X')
 		return (ft_itoa_base(va_arg(args, unsigned int),
-			16, "0123456789ABCDEF", 0));
+				16, "0123456789ABCDEF", 0));
 	else if (format == '%')
 		return (write(1, "%", 1));
 	return (-1);
@@ -88,8 +88,8 @@ static inline int	ft_format(va_list args, char format)
 
 int	ft_printf(const char *str, ...)
 {
-	int	len;
-	int	tmp;
+	int		len;
+	int		tmp;
 	va_list	args;
 
 	len = 0;
