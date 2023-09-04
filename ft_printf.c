@@ -2,7 +2,7 @@
 #include <unistd.h>
 #include <stdint.h>
 
-static inline int	ft_putstr(char *st)
+static inline int	ft_putstr(char *str)
 {
 	int	len;
 
