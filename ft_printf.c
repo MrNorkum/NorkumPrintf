@@ -1,4 +1,6 @@
-#include "ft_printf.h"
+#include <stdarg.h>
+#include <unistd.h>
+#include <stdint.h>
 
 static inline int	ft_putstr(char *str)
 {
