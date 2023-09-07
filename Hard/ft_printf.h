@@ -15,10 +15,11 @@
 
 # include <stdarg.h>
 
-# define ULL unsigned long long
 # define DEC "0123456789"
 # define HEXLOW "0123456789abcdef"
 # define HEXUP "0123456789ABCDEF"
+
+typdef unsigned long long  t_ull;
 
 typedef struct s_printf
 {
@@ -47,7 +48,7 @@ int		my_putchar(char c, t_printf *x);
 int		my_putstring(char *s, t_printf *x);
 int		my_putint(long n, t_printf *x);
 int		my_putuint(unsigned long n, t_printf *x);
-int		my_putpoint(ULL n, t_printf *x);
+int		my_putpoint(t_ull n, t_printf *x);
 int		my_puthex(unsigned long n, char *hex, t_printf *x);
 int		ft_printf(const char *s, ...);
 
@@ -58,7 +59,7 @@ int		u_function(t_printf *x, unsigned int n, int len);
 int		d_function(t_printf *x, long n, int len);
 int		x_function(t_printf *x, unsigned int n, int len);
 int		nbrlen(int n);
-int		nbrulen(ULL n, int base);
+int		nbrulen(t_ull n, int base);
 int		ft_strlen(char *str);
 char	*ft_strchr(const char *s, int c);
 int		my_atoi(const char *str, int sign, int res, int mod);
