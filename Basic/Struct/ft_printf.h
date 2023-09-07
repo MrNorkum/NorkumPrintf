@@ -4,10 +4,11 @@
 # include <stdarg.h>
 # include <unistd.h>
 
-# define ULL unsigned long long
 # define DEC "0123456789"
 # define HEXLOW "0123456789abcdef"
 # define HEXUP "0123456789ABCDEF"
+
+typdef unsigned long long  t_ull;
 
 typedef struct s_printf
 {
