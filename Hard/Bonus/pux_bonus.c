@@ -6,7 +6,7 @@ int	p_function(t_printf *x)
 	void	*p;
 	int		len;
 
-	p = va_arg(x->args, ULL);
+	p = va_arg(x->args, t_ull);
 	len = nbrulen(p, 16) + 2;
 	i = -1;
 	if (x->ctrl1 > 0)
