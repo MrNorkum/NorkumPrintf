@@ -3,7 +3,7 @@
 int	p_function(t_printf *x)
 {
 	int		i;
-	void	*p;
+	t_ull		p;
 	int		len;
 
 	p = va_arg(x->args, t_ull);
