@@ -46,7 +46,7 @@ static inline int	my_format(t_printf *x)
 	else if (x->f == 'u')
 		return (my_putuint(va_arg(x->args, unsigned int), x));
 	else if (x->f == 'p')
-		return (my_putpoint(va_arg(x->args, void *), x));
+		return (my_putpoint(va_arg(x->args, t_ull), x));
 	else if (x->f == 'x')
 		return (my_puthex(va_arg(x->args, unsigned int), HEXLOW, x));
 	else if (x->f == 'X')
