@@ -14,7 +14,7 @@ int	nbrlen(int n)
 	return (len);
 }
 
-int	nbrulen(ULL n, int base)
+int	nbrulen(t_ull n, int base)
 {
 	int	len;
 
