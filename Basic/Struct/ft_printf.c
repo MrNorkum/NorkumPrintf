@@ -15,7 +15,7 @@ static inline int	my_putstring(char *s, t_printf *x)
 	return (1);
 }
 
-static inline int	my_itoa(ULL n, int base, char *s, t_printf *x)
+static inline int	my_itoa(t_ull n, int base, char *s, t_printf *x)
 {
 	int	tab[50];
 	int	mod;
@@ -55,7 +55,7 @@ static inline int	my_format(t_printf *x)
 	else if (x->f == 'd' || x->f == 'i')
 		return (my_itoa(va_arg(x->args, int), 10, DEC, x));
 	else if (x->f == 'p')
-		return (my_itoa(va_arg(x->args, ULL), 16, HEXLOW, x));
+		return (my_itoa(va_arg(x->args, t_ull), 16, HEXLOW, x));
 	else if (x->f == 'x')
 		return (my_itoa(va_arg(x->args, unsigned int), 16, HEXLOW, x));
 	else if (x->f == 'X')
