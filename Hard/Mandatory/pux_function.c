@@ -40,7 +40,7 @@ int	my_puthex(unsigned long n, char *hex, t_printf *x)
 	return (1);
 }
 
-int	my_putpoint(ULL n, t_printf *x)
+int	my_putpoint(t_ull n, t_printf *x)
 {
 	int			arr[100];
 	char		*hex;
