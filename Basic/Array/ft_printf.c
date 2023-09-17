@@ -13,7 +13,7 @@ static inline int	ft_putstr(char *str)
 	return (len);
 }
 
-static inline int	ft_itoa_base2(t_ull n, int base, char *str, int len)
+static inline int	ft_itoa_base2(uintptr_t n, int base, char *str, int len)
 {
 	int	arr[100];
 	int	i;
@@ -33,7 +33,7 @@ static inline int	ft_itoa_base2(t_ull n, int base, char *str, int len)
 	return (len);
 }
 
-static inline int	ft_itoa_base(t_ull n, int base, char *str, int mod)
+static inline int	ft_itoa_base(uintptr_t n, int base, char *str, int mod)
 {
 	int	len;
 
@@ -71,7 +71,7 @@ static inline int	ft_format(va_list args, char f)
 	else if (f == 'd' || f == 'i')
 		return (ft_itoa_base(va_arg(args, int), 10, DEC, 1));
 	else if (f == 'p')
-		return (ft_itoa_base(va_arg(args, t_ull), 16, HEXLOW, 2));
+		return (ft_itoa_base(va_arg(args, uintptr_t), 16, HEXLOW, 2));
 	else if (f == 'x')
 		return (ft_itoa_base(va_arg(args, unsigned int), 16, HEXLOW, 0));
 	else if (f == 'X')
