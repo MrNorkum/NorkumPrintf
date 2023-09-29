@@ -39,7 +39,7 @@ static inline int	my_itoa(uintptr_t n, int base, char *s, t_printf *x)
 		n /= base;
 	}
 	while (i--)
-		if (my_putchar(s[arr[i]], x) == -1)
+	    if (my_putchar(s[arr[i]], x) == -1)
 			return (-1);
 	return (1);
 }
@@ -50,16 +50,16 @@ static inline int	my_format(t_printf *x)
 		return (my_putchar(va_arg(x->args, int), x));
 	else if (x->f == 's')
 		return (my_putstring(va_arg(x->args, char *), x));
-	else if (x->f == 'u')
-		return (my_itoa(va_arg(x->args, unsigned int), 10, DEC, x));
 	else if (x->f == 'd' || x->f == 'i')
 		return (my_itoa(va_arg(x->args, int), 10, DEC, x));
-	else if (x->f == 'p')
-		return (my_itoa(va_arg(x->args, uintptr_t), 16, HEXLOW, x));
+	else if (x->f == 'u')
+		return (my_itoa(va_arg(x->args, unsigned int), 10, DEC, x));
 	else if (x->f == 'x')
 		return (my_itoa(va_arg(x->args, unsigned int), 16, HEXLOW, x));
 	else if (x->f == 'X')
 		return (my_itoa(va_arg(x->args, unsigned int), 16, HEXUP, x));
+	else if (x->f == 'p')
+		return (my_itoa(va_arg(x->args, uintptr_t), 16, HEXLOW, x));
 	else if (x->f == '%')
 		return (my_putchar('%', x));
 	return (-1);
@@ -85,3 +85,4 @@ int	ft_printf(const char *s, ...)
 	}
 	return (va_end(x.args), x.len);
 }
+
