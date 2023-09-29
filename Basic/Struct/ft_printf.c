@@ -39,7 +39,7 @@ static inline int	my_itoa(uintptr_t n, int base, char *s, t_printf *x)
 		n /= base;
 	}
 	while (i--)
-		if (my_putchar(s[tab[i]], x) == -1)
+		if (my_putchar(s[arr[i]], x) == -1)
 			return (-1);
 	return (1);
 }
