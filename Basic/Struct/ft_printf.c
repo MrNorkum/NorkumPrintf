@@ -1,11 +1,11 @@
 #include "ft_printf.h"
 
-static inline int	my_putchar(char c, t_printf *x)
+static int	my_putchar(char c, t_printf *x)
 {
 	return (x->len++, write(1, &c, 1));
 }
 
-static inline int	my_putstring(char *s, t_printf *x)
+static int	my_putstring(char *s, t_printf *x)
 {
 	if (!s)
 		s = "(null)";
@@ -15,7 +15,7 @@ static inline int	my_putstring(char *s, t_printf *x)
 	return (1);
 }
 
-static inline int	my_itoa(uintptr_t n, int base, char *s, t_printf *x)
+static int	my_itoa(uintptr_t n, int base, char *s, t_printf *x)
 {
 	int	arr[50];
 	int	mod;
@@ -44,7 +44,7 @@ static inline int	my_itoa(uintptr_t n, int base, char *s, t_printf *x)
 	return (1);
 }
 
-static inline int	my_format(t_printf *x)
+static int	my_format(t_printf *x)
 {
 	if (x->f == 'c')
 		return (my_putchar(va_arg(x->args, int), x));
