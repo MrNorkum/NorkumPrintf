@@ -1,6 +1,6 @@
 #include "ft_printf.h"
 
-static inline int	ft_putstr(char *str)
+static int	ft_putstr(char *str)
 {
 	int	len;
 
@@ -13,7 +13,7 @@ static inline int	ft_putstr(char *str)
 	return (len);
 }
 
-static inline int	ft_itoa_base2(uintptr_t n, int base, char *str, int len)
+static int	ft_itoa_base_two(uintptr_t n, int base, char *str, int len)
 {
 	int	arr[100];
 	int	i;
@@ -33,7 +33,7 @@ static inline int	ft_itoa_base2(uintptr_t n, int base, char *str, int len)
 	return (len);
 }
 
-static inline int	ft_itoa_base(uintptr_t n, int base, char *str, int mod)
+static int	ft_itoa_base(uintptr_t n, int base, char *str, int mod)
 {
 	int	len;
 
@@ -57,10 +57,10 @@ static inline int	ft_itoa_base(uintptr_t n, int base, char *str, int mod)
 			return (-1);
 		return (len + 1);
 	}
-	return (ft_itoa_base2(n, base, str, len));
+	return (ft_itoa_base_two(n, base, str, len));
 }
 
-static inline int	ft_format(va_list args, char f)
+static int	ft_format(va_list args, char f)
 {
 	if (f == 'c')
 		return (f = va_arg(args, int), write(1, &f, 1));
