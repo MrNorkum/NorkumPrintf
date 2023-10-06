@@ -15,7 +15,7 @@ static int	my_putstring(char *s, t_printf *x)
 	return (1);
 }
 
-static int	my_itoa(uintptr_t n, int base, char *s, t_printf *x)
+static int	my_itoa(u_int64_t n, int base, char *s, t_printf *x)
 {
 	int	arr[50];
 	int	mod;
@@ -59,7 +59,7 @@ static int	my_format(t_printf *x)
 	else if (x->f == 'X')
 		return (my_itoa(va_arg(x->args, unsigned int), 16, HEXUP, x));
 	else if (x->f == 'p')
-		return (my_itoa(va_arg(x->args, uintptr_t), 16, HEXLOW, x));
+		return (my_itoa(va_arg(x->args, u_int64_t), 16, HEXLOW, x));
 	else if (x->f == '%')
 		return (my_putchar('%', x));
 	return (-1);
