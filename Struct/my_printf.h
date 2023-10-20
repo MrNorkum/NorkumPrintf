@@ -1,5 +1,5 @@
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#ifndef MY_PRINTF_H
+# define MY_PRINTF_H
 
 # include <stdarg.h>
 # include <unistd.h>
@@ -9,13 +9,13 @@
 # define HEXLOW "0123456789abcdef"
 # define HEXUP "0123456789ABCDEF"
 
-typedef struct s_printf
+typedef struct printf_s
 {
 	va_list		args;
 	char		f;
 	int			len;
-}		t_printf;
+}		printf_t;
 
-int	ft_printf(const char *s, ...);
+int	my_printf(const char *s, ...);
 
 #endif

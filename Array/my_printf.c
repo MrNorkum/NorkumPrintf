@@ -1,6 +1,6 @@
-#include "ft_printf.h"
+#include "my_printf.h"
 
-static int	ft_putstr(char *str)
+static int	my_putstr(char *str)
 {
 	int	len;
 
@@ -13,7 +13,7 @@ static int	ft_putstr(char *str)
 	return (len);
 }
 
-static int	ft_itoa_base_two(u_int64_t n, int base, char *str, int len)
+static int	my_itoa_two(u_int64_t n, int base, char *str, int len)
 {
 	int	arr[100];
 	int	i;
@@ -33,7 +33,7 @@ static int	ft_itoa_base_two(u_int64_t n, int base, char *str, int len)
 	return (len);
 }
 
-static int	ft_itoa_base(u_int64_t n, int base, char *str, int mod)
+static int	my_itoa(u_int64_t n, int base, char *str, int mod)
 {
 	int	len;
 
@@ -57,31 +57,31 @@ static int	ft_itoa_base(u_int64_t n, int base, char *str, int mod)
 			return (-1);
 		return (len + 1);
 	}
-	return (ft_itoa_base_two(n, base, str, len));
+	return (my_itoa_two(n, base, str, len));
 }
 
-static int	ft_format(va_list args, char f)
+static int	my_format(va_list args, char f)
 {
 	if (f == 'c')
 		return (f = va_arg(args, int), write(1, &f, 1));
 	else if (f == 's')
-		return (ft_putstr(va_arg(args, char *)));
+		return (my_putstr(va_arg(args, char *)));
 	else if (f == 'u')
-		return (ft_itoa_base(va_arg(args, unsigned int), 10, DEC, 0));
+		return (my_itoa(va_arg(args, unsigned int), 10, DEC, 0));
 	else if (f == 'd' || f == 'i')
-		return (ft_itoa_base(va_arg(args, int), 10, DEC, 1));
+		return (my_itoa(va_arg(args, int), 10, DEC, 1));
 	else if (f == 'p')
-		return (ft_itoa_base(va_arg(args, u_int64_t), 16, HEXLOW, 2));
+		return (my_itoa(va_arg(args, u_int64_t), 16, HEXLOW, 2));
 	else if (f == 'x')
-		return (ft_itoa_base(va_arg(args, unsigned int), 16, HEXLOW, 0));
+		return (my_itoa(va_arg(args, unsigned int), 16, HEXLOW, 0));
 	else if (f == 'X')
-		return (ft_itoa_base(va_arg(args, unsigned int), 16, HEXUP, 0));
+		return (my_itoa(va_arg(args, unsigned int), 16, HEXUP, 0));
 	else if (f == '%')
 		return (write(1, "%", 1));
 	return (-1);
 }
 
-int	ft_printf(const char *s, ...)
+int	my_printf(const char *s, ...)
 {
 	int		len;
 	int		tmp;
@@ -93,7 +93,7 @@ int	ft_printf(const char *s, ...)
 	{
 		tmp = 1;
 		if (*s == '%')
-			tmp = ft_format(args, *++s);
+			tmp = my_format(args, *++s);
 		else if (write(1, s, 1) == -1)
 			return (-1);
 		s++;

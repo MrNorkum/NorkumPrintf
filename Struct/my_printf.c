@@ -1,11 +1,11 @@
-#include "ft_printf.h"
+#include "my_printf.h"
 
-static int	my_putchar(char c, t_printf *x)
+static int	my_putchar(char c, printf_t *x)
 {
 	return (x->len++, write(1, &c, 1));
 }
 
-static int	my_putstring(char *s, t_printf *x)
+static int	my_putstr(char *s, printf_t *x)
 {
 	if (!s)
 		s = "(null)";
@@ -15,7 +15,7 @@ static int	my_putstring(char *s, t_printf *x)
 	return (1);
 }
 
-static int	my_itoa(u_int64_t n, int base, char *s, t_printf *x)
+static int	my_itoa(u_int64_t n, int base, char *s, printf_t *x)
 {
 	int	arr[50];
 	int	mod;
@@ -29,7 +29,7 @@ static int	my_itoa(u_int64_t n, int base, char *s, t_printf *x)
 		if (my_putchar('-', x) == -1)
 			return (-1);
 	}
-	if (mod == 2 && my_putstring("0x", x) == -1)
+	if (mod == 2 && my_putstr("0x", x) == -1)
 		return (-1);
 	if (!n && my_putchar('0', x) == -1)
 		return (-1);
@@ -44,12 +44,12 @@ static int	my_itoa(u_int64_t n, int base, char *s, t_printf *x)
 	return (1);
 }
 
-static int	my_format(t_printf *x)
+static int	my_format(printf_t *x)
 {
 	if (x->f == 'c')
 		return (my_putchar(va_arg(x->args, int), x));
 	else if (x->f == 's')
-		return (my_putstring(va_arg(x->args, char *), x));
+		return (my_putstr(va_arg(x->args, char *), x));
 	else if (x->f == 'd' || x->f == 'i')
 		return (my_itoa(va_arg(x->args, int), 10, DEC, x));
 	else if (x->f == 'u')
@@ -67,7 +67,7 @@ static int	my_format(t_printf *x)
 
 int	ft_printf(const char *s, ...)
 {
-	t_printf	x;
+	printf_t	x;
 
 	x.len = 0;
 	va_start(x.args, s);
