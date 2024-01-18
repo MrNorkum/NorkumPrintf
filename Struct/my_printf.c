@@ -17,7 +17,7 @@ static int	my_putstr(char *s, printf_t *x)
 
 static int	my_itoa(u_int64_t n, int base, char *s, printf_t *x)
 {
-	int	arr[50];
+	int	arr[15];
 	int	mod;
 	int	i;
 
